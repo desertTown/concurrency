@@ -1,4 +1,4 @@
-package com.jluzh.concurrency.annotations;
+package com.jluzh.concurrency;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
