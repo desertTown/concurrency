@@ -1,9 +1,11 @@
-package com.jluzh.concurrency.commonUnsafe;
+package com.jluzh.concurrency.syncContainer;
 
-import com.jluzh.concurrency.annotations.NotThreadSafe;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.jluzh.concurrency.annotations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -11,13 +13,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 @Slf4j
-@NotThreadSafe
-public class HashSetExample {
+@ThreadSafe
+public class CollectionExample2 {
     private static int clientRequest = 5000;
 
     private static int threadTotal = 200;
 
-    private static Set<Integer> set = new HashSet<>();
+    private static Set<Integer> set = Collections.synchronizedSet(Sets.newHashSet());
 
     public static void main(String[] args) throws InterruptedException {
         Semaphore semaphore = new Semaphore(threadTotal);

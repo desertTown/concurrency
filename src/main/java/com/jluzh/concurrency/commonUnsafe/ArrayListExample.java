@@ -1,5 +1,6 @@
 package com.jluzh.concurrency.commonUnsafe;
 
+import com.jluzh.concurrency.annotations.NotThreadSafe;
 import com.jluzh.concurrency.annotations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 @Slf4j
-@ThreadSafe
+@NotThreadSafe
 public class ArrayListExample {
     private static int clientRequest = 5000;
 

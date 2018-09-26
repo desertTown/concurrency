@@ -1,23 +1,24 @@
-package com.jluzh.concurrency.commonUnsafe;
+package com.jluzh.concurrency.syncContainer;
 
-import com.jluzh.concurrency.annotations.NotThreadSafe;
+import com.jluzh.concurrency.annotations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 @Slf4j
-@NotThreadSafe
-public class HashSetExample {
+@ThreadSafe
+public class HashTableExample {
     private static int clientRequest = 5000;
 
     private static int threadTotal = 200;
 
-    private static Set<Integer> set = new HashSet<>();
+    private static Map<Integer, Integer> map = new Hashtable<>();
 
     public static void main(String[] args) throws InterruptedException {
         Semaphore semaphore = new Semaphore(threadTotal);
@@ -38,10 +39,10 @@ public class HashSetExample {
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("size: {}", set.size());
+        log.info("size: {}", map.size());
     }
 
     private static void update(int i) {
-        set.add(i);
+        map.put(i, i);
     }
 }
